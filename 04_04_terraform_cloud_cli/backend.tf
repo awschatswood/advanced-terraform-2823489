@@ -1,9 +1,9 @@
 terraform {
   backend "remote" {
-    organization = "red30"
+    organization = "shield-terraform"
 
     workspaces {
-      name = "cli-workspace"
+      name = "hashicat-aws"
     }
   }
 }

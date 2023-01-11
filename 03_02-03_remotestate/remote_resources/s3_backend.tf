@@ -6,7 +6,7 @@ variable "aws_access_key" {}
 variable "aws_secret_key" {}
 
 variable "bucket_name" {
-  default = "red30-tfstate"
+  default = "red30-tfstate-xubao"
 }
 
 # //////////////////////////////
@@ -22,13 +22,13 @@ provider "aws" {
 # TERRAFORM USER
 # //////////////////////////////
 data "aws_iam_user" "terraform" {
-  user_name = "terraform"
+  user_name = "splunk"
 }
 
 # //////////////////////////////
 # S3 BUCKET
 # //////////////////////////////
-resource "aws_s3_bucket" "red30-tfremotestate" {
+resource "aws_s3_bucket" "red30-tfremotestate-xubao" {
   bucket = var.bucket_name
   force_destroy = true
   acl = "private"
@@ -56,8 +56,8 @@ resource "aws_s3_bucket" "red30-tfremotestate" {
 EOF
 }
 
-resource "aws_s3_bucket_public_access_block" "red30-tfremotestate" {
-  bucket = aws_s3_bucket.red30-tfremotestate.id
+resource "aws_s3_bucket_public_access_block" "red30-tfremotestate-xubao" {
+  bucket = aws_s3_bucket.red30-tfremotestate-xubao.id
 
   block_public_acls   = true
   block_public_policy = true
